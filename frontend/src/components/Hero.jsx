@@ -50,9 +50,7 @@ export default function Hero() {
           </h1>
           <p className="hero-role">{displayText}</p>
           <p>
-            I craft stunning short-form videos and eye-catching posters that elevate
-            brands and captivate audiences. Let&apos;s turn your vision into visual
-            magic.
+            I'm a freelance video editor who transforms ideas into engaging visual stories. I create high quality, attention grabbing short-form videos that help brands, businesses, and creators stand out online. With a focus on creativity, fast delivery, and clear communication, I'm committed to delivering content that makes an impact and helps your brand grow.
           </p>
 
           <div className="hero-actions">
@@ -70,32 +68,51 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.5 }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
         >
-          <h3 style={{ marginBottom: '12px' }}>What I Deliver</h3>
-          <p style={{ color: 'var(--muted)', marginBottom: '16px' }}>
-            Viral-ready edits, clean storytelling, and impactful poster designs for
-            modern social brands.
-          </p>
-          <div className="hero-stat-grid">
-            <div className="hero-stat">
-              <strong>20+</strong>
-              <span>Projects Done</span>
-            </div>
-            <div className="hero-stat">
-              <strong>10+</strong>
-              <span>Happy Clients</span>
-            </div>
-            <div className="hero-stat">
-              <strong>4</strong>
-              <span>Videos Made</span>
-            </div>
-            <div className="hero-stat">
-              <strong>4</strong>
-              <span>Posters Made</span>
-            </div>
+          <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)', marginBottom: '4px' }}>What I Deliver</h3>
+
+          <div className="animated-box">
+            <h4 style={{ marginBottom: '10px', fontSize: '1.6rem', color: 'var(--accent)', position: 'relative', zIndex: 2 }}>Core Services</h4>
+            <ul style={{ color: 'var(--muted)', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '1.45rem', position: 'relative', zIndex: 2 }}>
+              <li><strong>Short-Form Video</strong> (Reels & TikTok)</li>
+              <li><strong>Motion Graphics</strong> & Color Grading</li>
+              <li><strong>Posters</strong> & Branding Assets</li>
+            </ul>
+          </div>
+
+          <div className="animated-box">
+            <h4 style={{ marginBottom: '10px', fontSize: '1.6rem', color: 'var(--accent)', position: 'relative', zIndex: 2 }}>Why Me?</h4>
+            <ul style={{ color: 'var(--muted)', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '1.45rem', position: 'relative', zIndex: 2 }}>
+              <li>Premium, professional-grade results</li>
+              <li>Fast revisions & on-time delivery</li>
+              <li>Edits engineered to capture attention</li>
+            </ul>
           </div>
         </motion.aside>
       </div>
+
+      <motion.div 
+        className="container"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+      >
+        <div className="stats-banner">
+          <div className="stat-item">
+            <strong>6M+</strong>
+            <span>Views Generated</span>
+          </div>
+          <div className="stat-item">
+            <strong>10+</strong>
+            <span>Videos Crafted</span>
+          </div>
+          <div className="stat-item">
+            <strong>9+</strong>
+            <span>Posters Designed</span>
+          </div>
+        </div>
+      </motion.div>
     </section>
   )
 }

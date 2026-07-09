@@ -34,7 +34,7 @@ export default function Portfolio() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          My Portfolio
+          Works
         </motion.h2>
         <p className="section-subtitle">Featured work aligned for strong visual storytelling.</p>
 

@@ -5,7 +5,7 @@ const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Works', href: '#portfolio' },
   { name: 'Contact', href: '#contact' },
 ]
 
@@ -93,8 +93,8 @@ export default function Navbar({ logo }) {
     <nav ref={navRef} className={`site-nav ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
       <div className="site-nav-inner">
         <a href="#home" className="nav-brand" onClick={() => { setMobileOpen(false); setActive('#home') }}>
-          <img src={logo} alt="ZenForce Edits" />
-          <span>ZenForce Edits</span>
+          <img src={logo} alt="ZenForge Edits" />
+          <span>ZenForge Edits</span>
         </a>
 
         <div className="nav-links">

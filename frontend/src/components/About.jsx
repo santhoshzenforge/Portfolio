@@ -32,7 +32,7 @@ export default function About({ profileImg }) {
             <img src={profileImg} alt="Santhosh" className="about-image" />
             <div className="profile-social" aria-label="Profile social links">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/zenforge_edits?igsh=eGV0bTF2bHEwZ3Bz"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -56,17 +56,21 @@ export default function About({ profileImg }) {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p>
-              I&apos;m Santhosh, the creative force behind ZenForce Edits. With years
-              of experience in short-form video editing and poster design, I
-              specialize in transforming raw footage into compelling visual stories
-              that grab attention and drive engagement.
+            <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)', marginBottom: '16px' }}>Why Choose Me?</h3>
+            <p style={{ fontSize: '1.6rem', marginBottom: '24px', lineHeight: '1.6' }}>
+              I don&apos;t just edit videos, I create content that captures attention and leaves a lasting impression. Every project is crafted with creativity, precision, and a results-driven mindset.
             </p>
-            <p>
-              From viral ready Reels and instagram posts to stunning social media posters,
-              every project gets the full ZenForce treatment, precision editing,
-              color grading, motion graphics, and a deep understanding of what makes
-              content stop the scroll.
+            
+            <ul style={{ listStyleType: 'none', paddingLeft: 0, display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', fontSize: '1.5rem', color: 'var(--muted)' }}>
+              <li>Premium-quality video editing & poster design</li>
+              <li>Engaging visual storytelling that keeps audiences watching</li>
+              <li>Fast, reliable, and on-time delivery</li>
+              <li>Clear communication and smooth collaboration</li>
+              <li>Unlimited commitment to quality and client satisfaction</li>
+            </ul>
+
+            <p style={{ fontSize: '1.6rem', fontWeight: 'bold', color: 'var(--text)', marginBottom: '32px' }}>
+              Your vision. My creativity. Content that delivers results.
             </p>
 
             <a href="#contact" className="btn-primary">Let&apos;s Work Together</a>

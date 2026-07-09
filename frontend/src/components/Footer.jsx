@@ -5,8 +5,8 @@ export default function Footer({ logo }) {
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <img src={logo} alt="ZenForce Edits" />
-          <span>ZenForce Edits</span>
+          <img src={logo} alt="ZenForge Edits" />
+          <span>ZenForge Edits</span>
         </div>
 
         <a href="mailto:zenforgeedits@gmail.com" className="btn-outline">
@@ -14,7 +14,7 @@ export default function Footer({ logo }) {
         </a>
 
         <p className="footer-copy">
-          &copy; {new Date().getFullYear()} ZenForce Edits. Crafted with <HiHeart style={{ verticalAlign: 'middle' }} /> All rights reserved.
+          &copy; {new Date().getFullYear()} ZenForge Edits. Crafted with <HiHeart style={{ verticalAlign: 'middle' }} /> All rights reserved.
         </p>
       </div>
     </footer>
