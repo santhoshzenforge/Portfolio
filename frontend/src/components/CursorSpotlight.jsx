@@ -16,10 +16,9 @@ export default function CursorSpotlight() {
     <div
       className="cursor-spotlight"
       style={{
-        left: \\px\,
-        top: \\px\,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
       }}
     />
   );
 }
-
