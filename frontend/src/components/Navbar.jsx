@@ -1,146 +1,82 @@
-import { useState, useEffect, useRef } from 'react'
-import { HiMenu, HiX } from 'react-icons/hi'
+import { useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { HiHome, HiUser, HiLightningBolt, HiFilm, HiMail } from 'react-icons/hi';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Works', href: '#portfolio' },
-  { name: 'Contact', href: '#contact' },
-]
+  { name: 'Home', href: '#home', icon: HiHome },
+  { name: 'About', href: '#about', icon: HiUser },
+  { name: 'Skills', href: '#skills', icon: HiLightningBolt },
+  { name: 'Works', href: '#portfolio', icon: HiFilm },
+  { name: 'Contact', href: '#contact', icon: HiMail },
+];
 
-export default function Navbar({ logo }) {
-  const navRef = useRef(null)
-  const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('#home')
-  const [mobileOpen, setMobileOpen] = useState(false)
+function DockItem({ link, active, mouseX }) {
+  const ref = require('react').useRef(null);
+  
+  const distance = useTransform(mouseX, (val) => {
+    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    return val - bounds.x - bounds.width / 2;
+  });
+
+  // Scale based on distance from mouse (macOS dock effect)
+  const widthSync = useTransform(distance, [-150, 0, 150], [50, 80, 50]);
+  const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+
+  return (
+    <div className="dock-item-wrapper">
+      <div className="dock-tooltip">{link.name}</div>
+      <motion.a
+        ref={ref}
+        href={link.href}
+        style={{ width, height: width }}
+        className={\dock-item \\}
+      >
+        <link.icon size={24} />
+      </motion.a>
+    </div>
+  );
+}
+
+export default function Navbar() {
+  const [active, setActive] = useState('#home');
+  const mouseX = useMotionValue(Infinity);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 8)
-      const marker = 140
-      let current = '#home'
+      const marker = window.innerHeight / 2;
+      let current = '#home';
 
       for (let i = 0; i < navLinks.length; i++) {
-        const id = navLinks[i].href.slice(1)
-        const el = document.getElementById(id)
-        if (!el) continue
+        const id = navLinks[i].href.slice(1);
+        const el = document.getElementById(id);
+        if (!el) continue;
 
-        const rect = el.getBoundingClientRect()
-        const isActiveSection = rect.top <= marker && rect.bottom > marker
-        if (isActiveSection) {
-          current = `#${id}`
-          break
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= marker && rect.bottom > marker) {
+          current = \#\\;
+          break;
         }
       }
+      setActive(current);
+    };
 
-      setActive(current)
-    }
-
-    onScroll()
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    const handleHashChange = () => setMobileOpen(false)
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setMobileOpen(false)
-      }
-    }
-
-    window.addEventListener('hashchange', handleHashChange)
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange)
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!mobileOpen) return
-      if (navRef.current && !navRef.current.contains(event.target)) {
-        setMobileOpen(false)
-      }
-    }
-
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') {
-        setMobileOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    window.addEventListener('keydown', handleEscape)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      window.removeEventListener('keydown', handleEscape)
-    }
-  }, [mobileOpen])
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [mobileOpen])
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <nav ref={navRef} className={`site-nav ${scrolled ? 'scrolled' : ''} ${mobileOpen ? 'menu-open' : ''}`}>
-      <div className="site-nav-inner">
-        <a href="#home" className="nav-brand" onClick={() => { setMobileOpen(false); setActive('#home') }}>
-          <img src={logo} alt="ZenForge Edits" />
-          <span>ZenForge Edits</span>
-        </a>
-
-        <div className="nav-links">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`nav-link ${active === link.href ? 'active' : ''}`}
-              onClick={() => setActive(link.href)}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className="mobile-menu-btn"
-          onClick={() => setMobileOpen((prev) => !prev)}
-          aria-label="Toggle mobile menu"
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav-menu"
-        >
-          {mobileOpen ? <HiX /> : <HiMenu />}
-        </button>
-      </div>
-
-      <div
-        id="mobile-nav-menu"
-        className={`container mobile-menu ${mobileOpen ? 'open' : ''}`}
-        aria-hidden={!mobileOpen}
+    <div className="mac-dock-container">
+      <motion.div
+        className="mac-dock"
+        onMouseMove={(e) => mouseX.set(e.pageX)}
+        onMouseLeave={() => mouseX.set(Infinity)}
       >
         {navLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className={`nav-link ${active === link.href ? 'active' : ''}`}
-            onClick={() => {
-              setActive(link.href)
-              setMobileOpen(false)
-            }}
-          >
-            {link.name}
-          </a>
+          <DockItem key={link.name} link={link} active={active} mouseX={mouseX} />
         ))}
-      </div>
-    </nav>
-  )
+      </motion.div>
+    </div>
+  );
 }
+

@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import CursorSpotlight from './components/CursorSpotlight'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -20,6 +21,8 @@ function SectionTransition({ children }) {
 export default function App() {
   return (
     <>
+      <CursorSpotlight />
+      <ParticleBackground />
       <Navbar logo={logo} />
       <SectionTransition><Hero /></SectionTransition>
       <SectionTransition><About profileImg={profileImg} /></SectionTransition>

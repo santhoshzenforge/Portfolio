@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiArrowRight, HiPlay } from 'react-icons/hi'
+import MagneticButton from './MagneticButton'
 
 const roles = [
   'Short-Form Video Editor',
@@ -54,42 +55,54 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions">
-            <a href="#portfolio" className="btn-primary">
-              View My Work <HiArrowRight />
-            </a>
-            <a href="#contact" className="btn-outline">
-              <HiPlay /> Work With Me
-            </a>
+            <MagneticButton>
+              <a href="#portfolio" className="btn-primary">
+                View My Work <HiArrowRight />
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a href="#contact" className="btn-outline">
+                <HiPlay /> Work With Me
+              </a>
+            </MagneticButton>
           </div>
         </motion.div>
 
-        <motion.aside
-          className="hero-card"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.5 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
-        >
-          <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)', marginBottom: '4px' }}>What I Deliver</h3>
-
-          <div className="animated-box">
-            <h4 style={{ marginBottom: '10px', fontSize: '1.6rem', color: 'var(--accent)', position: 'relative', zIndex: 2 }}>Core Services</h4>
-            <ul style={{ color: 'var(--muted)', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '1.45rem', position: 'relative', zIndex: 2 }}>
+        <div className="hero-bento">
+          <motion.div
+            className="bento-card"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: [0, -8, 0] }}
+            transition={{ 
+              opacity: { duration: 0.5, delay: 0.15 },
+              y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+            }}
+          >
+            <h4 className="bento-title">Core Services</h4>
+            <ul className="bento-list">
               <li><strong>Short-Form Video</strong> (Reels & TikTok)</li>
               <li><strong>Motion Graphics</strong> & Color Grading</li>
               <li><strong>Posters</strong> & Branding Assets</li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="animated-box">
-            <h4 style={{ marginBottom: '10px', fontSize: '1.6rem', color: 'var(--accent)', position: 'relative', zIndex: 2 }}>Why Me?</h4>
-            <ul style={{ color: 'var(--muted)', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '1.45rem', position: 'relative', zIndex: 2 }}>
+          <motion.div
+            className="bento-card"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: [0, -12, 0] }}
+            transition={{ 
+              opacity: { duration: 0.5, delay: 0.3 },
+              y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }
+            }}
+          >
+            <h4 className="bento-title">Why Me?</h4>
+            <ul className="bento-list">
               <li>Premium, professional-grade results</li>
               <li>Fast revisions & on-time delivery</li>
               <li>Edits engineered to capture attention</li>
             </ul>
-          </div>
-        </motion.aside>
+          </motion.div>
+        </div>
       </div>
 
       <motion.div 
