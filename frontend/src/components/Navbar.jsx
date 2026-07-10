@@ -29,7 +29,7 @@ function DockItem({ link, active, mouseX }) {
         ref={ref}
         href={link.href}
         style={{ width, height: width }}
-        className={\dock-item \\}
+        className={`dock-item ${active === link.href ? 'active' : ''}`}
       >
         <link.icon size={24} />
       </motion.a>
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         const rect = el.getBoundingClientRect();
         if (rect.top <= marker && rect.bottom > marker) {
-          current = \#\\;
+          current = `#${id}`;
           break;
         }
       }
@@ -79,4 +79,3 @@ export default function Navbar() {
     </div>
   );
 }
-
