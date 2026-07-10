@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { HiPlay, HiPhotograph, HiColorSwatch, HiAnnotation } from 'react-icons/hi'
-import { SiAdobecreativecloud, SiAdobeaftereffects, SiAdobepremierepro, SiAdobephotoshop, SiAdobeillustrator, SiDavinciresolve, SiBlender } from 'react-icons/si'
+import { FiVideo, FiImage, FiLayers, FiEdit3, FiMonitor, FiFilm, FiCamera } from 'react-icons/fi'
 
 const skills = [
   { name: 'Video Editing', level: 95, icon: <HiPlay />, desc: 'Short-form & Long-form' },
@@ -63,13 +63,13 @@ export default function Skills() {
           {/* We duplicate the list to make the infinite scroll seamless */}
           {[1, 2].map((listIndex) => (
             <div key={listIndex} style={{ display: 'inline-flex', gap: '60px' }}>
-              <div className="software-item"><SiAdobepremierepro size={24} /> Premiere Pro</div>
-              <div className="software-item"><SiAdobeaftereffects size={24} /> After Effects</div>
-              <div className="software-item"><SiAdobephotoshop size={24} /> Photoshop</div>
-              <div className="software-item"><SiDavinciresolve size={24} /> DaVinci Resolve</div>
-              <div className="software-item"><SiAdobeillustrator size={24} /> Illustrator</div>
-              <div className="software-item"><SiBlender size={24} /> Blender 3D</div>
-              <div className="software-item"><SiAdobecreativecloud size={24} /> Creative Cloud</div>
+              <div className="software-item"><FiVideo size={24} /> Premiere Pro</div>
+              <div className="software-item"><FiLayers size={24} /> After Effects</div>
+              <div className="software-item"><FiImage size={24} /> Photoshop</div>
+              <div className="software-item"><FiFilm size={24} /> DaVinci Resolve</div>
+              <div className="software-item"><FiEdit3 size={24} /> Illustrator</div>
+              <div className="software-item"><FiMonitor size={24} /> Blender 3D</div>
+              <div className="software-item"><FiCamera size={24} /> Creative Cloud</div>
             </div>
           ))}
         </div>
