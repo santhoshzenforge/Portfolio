@@ -10,10 +10,10 @@ const projects = [
   { id: 2, title: 'Travel Montage', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw', desc: 'Cinematic travel short-form edit' },
   { id: 3, title: 'Fitness Promo Reel', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/9bZkp7q19f0', desc: 'Dynamic fitness transformation video' },
   { id: 4, title: 'Music Visualizer', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/kJQP7kiw5Fk', desc: 'Lyric video with motion graphics' },
-  { id: 5, title: 'Brand Identity Poster', category: 'Posters', thumbnail: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600', desc: 'Minimal brand identity poster design' },
-  { id: 6, title: 'Event Promotion Poster', category: 'Posters', thumbnail: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=600', desc: 'Vibrant event promotion design' },
-  { id: 7, title: 'Social Media Campaign', category: 'Posters', thumbnail: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600', desc: 'Instagram carousel campaign design' },
-  { id: 8, title: 'Fashion Lookbook', category: 'Posters', thumbnail: 'https://images.unsplash.com/photo-1557200139-90348f2963ac?w=600', desc: 'Fashion editorial poster series' },
+  { id: 5, title: 'Clinic Poster Design', category: 'Posters', thumbnail: '/clinic-poster.jpg', desc: 'Professional clinic branding poster' },
+  { id: 6, title: 'Coffee Poster Design', category: 'Posters', thumbnail: '/coffee-poster.jpg', desc: 'Vibrant coffee shop advertisement' },
+  { id: 7, title: 'Shoe Ad Design', category: 'Posters', thumbnail: '/shoe-poster.png', desc: 'Dynamic shoe promotional poster' },
+  { id: 8, title: 'Portfolio Showcase', category: 'Posters', thumbnail: '/portfolio-banner.jpg', desc: 'Custom portfolio branding' },
 ]
 
 export default function Portfolio() {
