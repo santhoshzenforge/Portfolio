@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { HiX } from 'react-icons/hi'
 
-const categories = ['All', 'Videos', 'Posters']
+const categories = ['Short Videos', 'Posters']
 
 const projects = [
-  { id: 1, title: 'Product Launch Reel', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', desc: 'High-energy product launch short video' },
-  { id: 2, title: 'Travel Montage', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw', desc: 'Cinematic travel short-form edit' },
-  { id: 3, title: 'Fitness Promo Reel', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/9bZkp7q19f0', desc: 'Dynamic fitness transformation video' },
-  { id: 4, title: 'Music Visualizer', category: 'Videos', thumbnail: 'https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg', videoUrl: 'https://www.youtube.com/embed/kJQP7kiw5Fk', desc: 'Lyric video with motion graphics' },
+  { id: 1, title: 'Motion Graphics Edit', category: 'Short Videos', videoUrl: '/portfolio-2.mp4', desc: 'Dynamic motion graphics and typography' },
+  { id: 2, title: 'Book Promo Edit', category: 'Short Videos', videoUrl: '/portfolio-book.mp4', desc: 'Cinematic promotional edit' },
+  { id: 3, title: 'Footages Compilation', category: 'Short Videos', videoUrl: '/portfolio-footages.mp4', desc: 'High-energy raw footage compilation' },
+  { id: 4, title: 'Creative Cut', category: 'Short Videos', videoUrl: '/portfolio-3.mp4', desc: 'Creative short-form video edit' },
   { id: 5, title: 'Clinic Poster Design', category: 'Posters', thumbnail: '/clinic-poster.jpg', desc: 'Professional clinic branding poster' },
   { id: 6, title: 'Coffee Poster Design', category: 'Posters', thumbnail: '/coffee-poster.jpg', desc: 'Vibrant coffee shop advertisement' },
   { id: 7, title: 'Shoe Ad Design', category: 'Posters', thumbnail: '/shoe-poster.png', desc: 'Dynamic shoe promotional poster' },
@@ -17,7 +17,7 @@ const projects = [
 ]
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState('All')
+  const [activeCategory, setActiveCategory] = useState('Short Videos')
   const [selectedProject, setSelectedProject] = useState(null)
   const [zoomLevel, setZoomLevel] = useState(1)
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
@@ -29,9 +29,7 @@ export default function Portfolio() {
 
   const handleCloseProject = () => setSelectedProject(null)
 
-  const filtered = activeCategory === 'All'
-    ? projects
-    : projects.filter((p) => p.category === activeCategory)
+  const filtered = projects.filter((p) => p.category === activeCategory)
 
   return (
     <section id="portfolio" ref={ref}>
@@ -73,13 +71,13 @@ export default function Portfolio() {
                 onClick={() => handleOpenProject(project)}
               >
                 <div className="project-hover-overlay">
-                  <span className="hover-text">{project.category === 'Videos' ? '▶ Play Video' : '👁 View Poster'}</span>
+                  <span className="hover-text">{project.category === 'Short Videos' ? '▶ Play Video' : '👁 View Poster'}</span>
                 </div>
-                <img 
-                  src={project.thumbnail} 
-                  alt={project.title} 
-                  className={`project-thumb ${project.category === 'Posters' ? 'poster-thumb' : ''}`} 
-                />
+                {project.category === 'Short Videos' ? (
+                  <video src={project.videoUrl} className="project-thumb" muted preload="metadata" />
+                ) : (
+                  <img src={project.thumbnail} alt={project.title} className="project-thumb poster-thumb" />
+                )}
                 <div className="project-copy">
                   <h3>{project.title}</h3>
                   <p>{project.desc}</p>
@@ -116,13 +114,12 @@ export default function Portfolio() {
                 </button>
               </div>
               <div className="modal-body">
-                {selectedProject.category === 'Videos' ? (
-                  <iframe
+                {selectedProject.category === 'Short Videos' ? (
+                  <video
                     src={selectedProject.videoUrl}
-                    title={selectedProject.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{ aspectRatio: '16/9' }}
+                    controls
+                    autoPlay
+                    style={{ width: '100%', maxHeight: '75vh', borderRadius: '8px', objectFit: 'contain', background: '#000' }}
                   />
                 ) : (
                   <div>
