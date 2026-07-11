@@ -158,37 +158,26 @@ export default function Portfolio() {
           >
             <motion.div
               layoutId={`project-${selectedProject.id}`}
-              className="modal"
+              style={{ width: '100%', maxWidth: '1000px', display: 'flex', justifyContent: 'center' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="modal-head">
-                <div>
-                  <h3>{selectedProject.title}</h3>
-                  <p>{selectedProject.category}</p>
-                </div>
-                <button type="button" className="close-btn" onClick={() => setSelectedProject(null)}>
-                  <HiX />
-                </button>
-              </div>
-              <div className="modal-body">
-                {selectedProject.category === 'Short Videos' ? (
-                  <video
-                    src={selectedProject.videoUrl.split('#')[0]} // Remove the #t= for actual playback
-                    controls
-                    autoPlay
-                    style={{ width: '100%', maxHeight: '75vh', borderRadius: '8px', objectFit: 'contain', background: '#000' }}
-                  />
-                ) : (
-                  <img 
-                    src={selectedProject.thumbnail} 
-                    alt={selectedProject.title}
-                    style={{ width: '100%', maxHeight: '75vh', borderRadius: '8px', objectFit: 'contain', background: '#000' }}
-                  />
-                )}
-              </div>
+              {selectedProject.category === 'Short Videos' ? (
+                <video
+                  src={selectedProject.videoUrl.split('#')[0]} // Remove the #t= for actual playback
+                  controls
+                  autoPlay
+                  style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
+                />
+              ) : (
+                <img 
+                  src={selectedProject.thumbnail} 
+                  alt={selectedProject.title}
+                  style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
+                />
+              )}
             </motion.div>
           </motion.div>
         )}
