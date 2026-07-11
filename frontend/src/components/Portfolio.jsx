@@ -108,9 +108,10 @@ export default function Portfolio() {
       <div className="container">
         <motion.h2
           className="section-title"
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -150 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         >
           Works
         </motion.h2>
