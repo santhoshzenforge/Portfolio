@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { HiHome, HiUser, HiLightningBolt, HiFilm, HiMail } from 'react-icons/hi';
 
@@ -11,7 +11,7 @@ const navLinks = [
 ];
 
 function DockItem({ link, active, mouseX }) {
-  const ref = require('react').useRef(null);
+  const ref = useRef(null);
   
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };

@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar'
 import CursorSpotlight from './components/CursorSpotlight'
+import ParticleBackground from './components/ParticleBackground'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
