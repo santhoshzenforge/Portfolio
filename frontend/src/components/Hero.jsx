@@ -41,13 +41,13 @@ export default function Hero() {
     <section id="home" className="hero">
       <div className="container hero-grid">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="hero-kicker">Freelance Portfolio</p>
           <h1>
-            Hi, I&apos;m <span className="gold-text">Santhosh</span>
+            ZenForge <span className="gold-text">Edits</span>
           </h1>
           <p className="hero-role">{displayText}</p>
           <p>
