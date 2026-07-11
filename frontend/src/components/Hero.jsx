@@ -98,7 +98,7 @@ export default function Hero() {
           >
             <h4 className="bento-title">Why Me?</h4>
             <p style={{ color: 'var(--muted)', fontSize: '1.4rem', lineHeight: '1.5' }}>
-              Your content deserves more than just edits it deserves impact. I create engaging videos and designs that help your brand grow and connect with your audience.
+              I can improvise your content with visual storytelling
             </p>
           </motion.div>
         </div>
