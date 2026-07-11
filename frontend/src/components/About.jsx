@@ -58,7 +58,7 @@ export default function About({ profileImg }) {
           >
             <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)', marginBottom: '16px' }}>Why Choose Me?</h3>
             <p style={{ fontSize: '1.6rem', marginBottom: '24px', lineHeight: '1.6' }}>
-              I don&apos;t just edit videos, I create content that captures attention and leaves a lasting impression. Every project is crafted with creativity, precision, and a results-driven mindset.
+              Your content deserves more than just edits—it deserves impact. I create engaging videos and designs that help your brand grow and connect with your audience.
             </p>
             
             <ul style={{ listStyleType: 'none', paddingLeft: 0, display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', fontSize: '1.5rem', color: 'var(--muted)' }}>

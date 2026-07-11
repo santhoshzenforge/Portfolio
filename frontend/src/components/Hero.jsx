@@ -83,6 +83,7 @@ export default function Hero() {
               <li><strong>Short-Form Video</strong> (Reels & TikTok)</li>
               <li><strong>Motion Graphics</strong> & Color Grading</li>
               <li><strong>Posters</strong> & Branding Assets</li>
+              <li><strong>Content Tips</strong> & Growth Strategy</li>
             </ul>
           </motion.div>
 
@@ -97,7 +98,7 @@ export default function Hero() {
           >
             <h4 className="bento-title">Why Me?</h4>
             <ul className="bento-list">
-              <li>Premium, professional-grade results</li>
+              <li>I can improvise your content with visual storytelling</li>
               <li>Fast revisions & on-time delivery</li>
               <li>Edits engineered to capture attention</li>
             </ul>

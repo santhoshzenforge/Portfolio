@@ -66,9 +66,6 @@ export default function Skills() {
               <div className="software-item"><FiVideo size={24} /> Premiere Pro</div>
               <div className="software-item"><FiLayers size={24} /> After Effects</div>
               <div className="software-item"><FiImage size={24} /> Photoshop</div>
-              <div className="software-item"><FiFilm size={24} /> DaVinci Resolve</div>
-              <div className="software-item"><FiEdit3 size={24} /> Illustrator</div>
-              <div className="software-item"><FiMonitor size={24} /> Blender 3D</div>
               <div className="software-item"><FiCamera size={24} /> Creative Cloud</div>
             </div>
           ))}
