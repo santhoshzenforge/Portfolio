@@ -97,11 +97,9 @@ export default function Hero() {
             }}
           >
             <h4 className="bento-title">Why Me?</h4>
-            <ul className="bento-list">
-              <li>I can improvise your content with visual storytelling</li>
-              <li>Fast revisions & on-time delivery</li>
-              <li>Edits engineered to capture attention</li>
-            </ul>
+            <p style={{ color: 'var(--muted)', fontSize: '1.4rem', lineHeight: '1.5' }}>
+              Your content deserves more than just edits it deserves impact. I create engaging videos and designs that help your brand grow and connect with your audience.
+            </p>
           </motion.div>
         </div>
       </div>
