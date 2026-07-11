@@ -60,18 +60,7 @@ export default function About({ profileImg }) {
             <p style={{ fontSize: '1.6rem', marginBottom: '24px', lineHeight: '1.6' }}>
               Your content deserves more than just edits—it deserves impact. I create engaging videos and designs that help your brand grow and connect with your audience.
             </p>
-            
-            <ul style={{ listStyleType: 'none', paddingLeft: 0, display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', fontSize: '1.5rem', color: 'var(--muted)' }}>
-              <li>Premium-quality video editing & poster design</li>
-              <li>Engaging visual storytelling that keeps audiences watching</li>
-              <li>Fast, reliable, and on-time delivery</li>
-              <li>Clear communication and smooth collaboration</li>
-              <li>Unlimited commitment to quality and client satisfaction</li>
-            </ul>
 
-            <p style={{ fontSize: '1.6rem', fontWeight: 'bold', color: 'var(--text)', marginBottom: '32px' }}>
-              Your vision. My creativity. Content that delivers results.
-            </p>
 
             <a href="#contact" className="btn-primary">Let&apos;s Work Together</a>
           </motion.div>
