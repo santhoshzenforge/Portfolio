@@ -44,7 +44,7 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
 
   return (
     <motion.article
-      layout
+      layoutId={`project-${project.id}`}
       className="deck-card"
       drag={isTop ? 'x' : false}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -157,10 +157,11 @@ export default function Portfolio() {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
+              layoutId={`project-${selectedProject.id}`}
               className="modal"
-              initial={{ scale: 0.96, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-head">
