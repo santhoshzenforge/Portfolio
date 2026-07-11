@@ -42,7 +42,8 @@ export default function Hero() {
       <div className="container hero-grid">
         <motion.div
           initial={{ opacity: 0, x: -250 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         >
           <p className="hero-kicker">Freelance Portfolio</p>
@@ -72,7 +73,8 @@ export default function Hero() {
           <motion.div
             className="bento-card"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: [0, -8, 0] }}
+            whileInView={{ opacity: 1, y: [0, -8, 0] }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{ 
               opacity: { duration: 0.5, delay: 0.15 },
               y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
@@ -90,7 +92,8 @@ export default function Hero() {
           <motion.div
             className="bento-card"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: [0, -12, 0] }}
+            whileInView={{ opacity: 1, y: [0, -12, 0] }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{ 
               opacity: { duration: 0.5, delay: 0.3 },
               y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }
@@ -107,7 +110,8 @@ export default function Hero() {
       <motion.div 
         className="container"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.1 }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
         <div className="stats-banner">
