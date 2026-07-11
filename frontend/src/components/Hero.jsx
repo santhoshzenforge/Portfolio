@@ -78,7 +78,7 @@ export default function Hero() {
               y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
             }}
           >
-            <h4 className="bento-title">Core Services</h4>
+            <h4 className="bento-title">Content Tips</h4>
             <ul className="bento-list">
               <li><strong>Short-Form Video</strong> (Reels & TikTok)</li>
               <li><strong>Motion Graphics</strong> & Color Grading</li>
