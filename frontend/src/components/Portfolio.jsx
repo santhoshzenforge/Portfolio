@@ -182,26 +182,11 @@ export default function Portfolio() {
                     style={{ width: '100%', maxHeight: '75vh', borderRadius: '8px', objectFit: 'contain', background: '#000' }}
                   />
                 ) : (
-                  <div>
-                    <div className="zoom-controls">
-                      <button className="zoom-btn" onClick={() => setZoomLevel(prev => Math.min(prev + 0.5, 3))}>Zoom In (+)</button>
-                      <button className="zoom-btn" onClick={() => setZoomLevel(prev => Math.max(prev - 0.5, 1))}>Zoom Out (-)</button>
-                    </div>
-                    <div className="zoom-container">
-                      <img 
-                        src={selectedProject.thumbnail} 
-                        alt={selectedProject.title}
-                        style={{ 
-                          transform: `scale(${zoomLevel})`, 
-                          transition: 'transform 0.3s ease',
-                          transformOrigin: 'top center',
-                          width: '100%',
-                          cursor: zoomLevel > 1 ? 'zoom-out' : 'zoom-in'
-                        }}
-                        onClick={() => setZoomLevel(prev => (prev === 1 ? 2 : 1))}
-                      />
-                    </div>
-                  </div>
+                  <img 
+                    src={selectedProject.thumbnail} 
+                    alt={selectedProject.title}
+                    style={{ width: '100%', maxHeight: '75vh', borderRadius: '8px', objectFit: 'contain', background: '#000' }}
+                  />
                 )}
               </div>
             </motion.div>
