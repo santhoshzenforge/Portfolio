@@ -71,8 +71,8 @@ export default function Hero() {
         <div className="hero-bento">
           <motion.div
             className="bento-card"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: [0, -8, 0] }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
             transition={{ 
               opacity: { duration: 0.5, delay: 0.15 },
               y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
@@ -89,8 +89,8 @@ export default function Hero() {
 
           <motion.div
             className="bento-card"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: [0, -12, 0] }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0, y: [0, -12, 0] }}
             transition={{ 
               opacity: { duration: 0.5, delay: 0.3 },
               y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }
@@ -106,8 +106,8 @@ export default function Hero() {
 
       <motion.div 
         className="container"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
         <div className="stats-banner">
