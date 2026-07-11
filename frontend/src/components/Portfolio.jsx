@@ -32,8 +32,15 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
   }
 
   // Visual stacking effects
-  const scale = 1 - index * 0.05
-  const yOffset = index * 20
+  const scale = 1 - index * 0.05;
+  const yOffset = index * 10;
+  
+  // Create a fan effect for the cards beneath the top card
+  // Index 1 goes slightly right, Index 2 goes slightly left
+  let initialRotation = 0;
+  if (index === 1) initialRotation = 6;
+  if (index === 2) initialRotation = -6;
+  if (index === 3) initialRotation = 10;
 
   return (
     <motion.article
@@ -51,22 +58,27 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
         scale, 
         y: yOffset,
         zIndex: 10 - index,
-        opacity: index > 2 ? 0 : 1 // Only show top 3
+        opacity: index > 3 ? 0 : 1 // Show top 4
       }}
-      style={{ x: isTop ? x : 0, rotate: isTop ? rotate : 0, opacity: isTop ? opacity : 1 }}
+      style={{ 
+        x: isTop ? x : 0, 
+        rotate: isTop ? rotate : initialRotation, 
+        opacity: isTop ? opacity : 1,
+        transformOrigin: "bottom center"
+      }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <div className="project-hover-overlay">
         <span className="hover-text">{project.category === 'Short Videos' ? '▶ Play Video' : '👁 View Poster'}</span>
       </div>
       {project.category === 'Short Videos' ? (
-        <video src={project.videoUrl} className="project-thumb" style={{ height: '70%' }} muted preload="metadata" />
+        <video src={project.videoUrl} className="project-thumb" style={{ height: '70%', width: '100%', objectFit: 'cover' }} muted preload="metadata" />
       ) : (
-        <img src={project.thumbnail} alt={project.title} className="project-thumb poster-thumb" style={{ height: '70%' }} />
+        <img src={project.thumbnail} alt={project.title} className="project-thumb poster-thumb" style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
       )}
-      <div className="project-copy" style={{ height: '30%', padding: '20px' }}>
-        <h3 style={{ fontSize: '1.8rem', margin: '0 0 8px 0', color: '#fff' }}>{project.title}</h3>
-        <p style={{ fontSize: '1.2rem', margin: 0, color: 'var(--text-muted)' }}>{project.desc}</p>
+      <div className="project-copy" style={{ height: '30%', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'var(--surface-light)' }}>
+        <h3 style={{ fontSize: '1.6rem', margin: '0 0 6px 0', color: '#fff', lineHeight: '1.2' }}>{project.title}</h3>
+        <p style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{project.desc}</p>
       </div>
     </motion.article>
   )
