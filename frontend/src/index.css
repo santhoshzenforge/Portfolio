@@ -1049,10 +1049,18 @@ section {
   transition: background 0.2s;
 }
 
-.dock-item:hover, .dock-item.active {
+.dock-item.active {
   background: rgba(0, 180, 216, 0.2);
   color: var(--accent);
   border-color: rgba(0, 180, 216, 0.3);
+}
+
+@media (hover: hover) {
+  .dock-item:hover {
+    background: rgba(0, 180, 216, 0.2);
+    color: var(--accent);
+    border-color: rgba(0, 180, 216, 0.3);
+  }
 }
 
 .dock-tooltip {
@@ -1071,9 +1079,11 @@ section {
   white-space: nowrap;
 }
 
-.dock-item-wrapper:hover .dock-tooltip {
-  opacity: 1;
-  transform: translateY(0);
+@media (hover: hover) {
+  .dock-item-wrapper:hover .dock-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -1210,6 +1220,10 @@ section {
   }
   .deck-nav-prev { left: -15px; }
   .deck-nav-next { right: -15px; }
+  .dock-item {
+    width: 48px !important;
+    height: 48px !important;
+  }
 }
 
 @media (max-width: 420px) {
