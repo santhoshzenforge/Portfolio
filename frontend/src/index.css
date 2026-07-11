@@ -1203,7 +1203,26 @@ section {
 }
 
 @media (max-width: 768px) {
-  .deck-nav-prev { left: -20px; }
-  .deck-nav-next { right: -20px; }
+  .deck-container {
+    height: 450px;
+    max-width: 320px;
+    margin-bottom: 100px; /* Prevents overlapping with the dock */
+  }
+  .deck-nav-prev { left: -15px; }
+  .deck-nav-next { right: -15px; }
+}
+
+@media (max-width: 420px) {
+  .deck-container {
+    height: 400px;
+    max-width: 280px;
+    margin-bottom: 100px;
+  }
+  .deck-nav-prev { left: -10px; }
+  .deck-nav-next { right: -10px; }
+  .deck-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
 }
 
