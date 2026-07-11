@@ -41,9 +41,9 @@ export default function Hero() {
     <section id="home" className="hero">
       <div className="container hero-grid">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -250 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         >
           <p className="hero-kicker">Freelance Portfolio</p>
           <h1>
@@ -71,11 +71,12 @@ export default function Hero() {
         <div className="hero-bento">
           <motion.div
             className="bento-card"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -250 }}
             animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
             transition={{ 
-              opacity: { duration: 0.5, delay: 0.15 },
-              y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+              opacity: { duration: 0.8, delay: 0.2 },
+              x: { duration: 0.8, type: "spring", bounce: 0.4, delay: 0.2 },
+              y: { repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }
             }}
           >
             <h4 className="bento-title">Content Tips</h4>
@@ -89,11 +90,12 @@ export default function Hero() {
 
           <motion.div
             className="bento-card"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -250 }}
             animate={{ opacity: 1, x: 0, y: [0, -12, 0] }}
             transition={{ 
-              opacity: { duration: 0.5, delay: 0.3 },
-              y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }
+              opacity: { duration: 0.8, delay: 0.35 },
+              x: { duration: 0.8, type: "spring", bounce: 0.4, delay: 0.35 },
+              y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1.2 }
             }}
           >
             <h4 className="bento-title">Why Me?</h4>
@@ -106,9 +108,9 @@ export default function Hero() {
 
       <motion.div 
         className="container"
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -250 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
+        transition={{ duration: 0.8, type: "spring", bounce: 0.4, delay: 0.5 }}
       >
         <div className="stats-banner">
           <div className="stat-item">
