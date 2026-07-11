@@ -58,7 +58,7 @@ export default function About({ profileImg }) {
           >
             <h3 style={{ fontSize: '2.4rem', color: 'var(--accent)', marginBottom: '16px' }}>Why Choose Me?</h3>
             <p style={{ fontSize: '1.6rem', marginBottom: '24px', lineHeight: '1.6' }}>
-              Your content deserves more than just edits—it deserves impact. I create engaging videos and designs that help your brand grow and connect with your audience.
+              Your content deserves more than just edits it deserves impact. I create engaging videos and designs that help your brand grow and connect with your audience.
             </p>
 
 
