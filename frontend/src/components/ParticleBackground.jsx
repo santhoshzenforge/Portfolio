@@ -2,7 +2,7 @@ import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-function Particles({ count = 3000 }) {
+function Particles({ count = 1200 }) {
   const mesh = useRef()
 
   const positions = useMemo(() => {
@@ -64,8 +64,8 @@ export default function ParticleField() {
       position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
       zIndex: 0, pointerEvents: 'none'
     }}>
-      <Canvas camera={{ position: [0, 0, 18], fov: 70 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
-        <Particles count={3000} />
+      <Canvas camera={{ position: [0, 0, 18], fov: 70 }} dpr={[1, 1.5]} gl={{ alpha: true }}>
+        <Particles count={1200} />
       </Canvas>
     </div>
   )
