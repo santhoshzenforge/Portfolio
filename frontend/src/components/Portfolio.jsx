@@ -6,10 +6,10 @@ import { HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 const categories = ['Short Videos', 'Posters']
 
 const projects = [
-  { id: 1, title: 'Motion Graphics Edit', category: 'Short Videos', videoUrl: '/portfolio-2.mp4#t=1.5', desc: 'Dynamic motion graphics and typography' },
-  { id: 2, title: 'Book Promo Edit', category: 'Short Videos', videoUrl: '/portfolio-book.mp4#t=1.5', desc: 'Cinematic promotional edit' },
-  { id: 3, title: 'Footages Compilation', category: 'Short Videos', videoUrl: '/portfolio-footages.mp4#t=1.5', desc: 'High-energy raw footage compilation' },
-  { id: 4, title: 'Creative Cut', category: 'Short Videos', videoUrl: '/portfolio-3.mp4#t=1.5', desc: 'Creative short-form video edit' },
+  { id: 2, title: 'Book Promo Edit', category: 'Short Videos', videoUrl: '/portfolio-book.mp4', thumbnail: '/thumb-book.jpg', desc: 'Cinematic promotional edit' },
+  { id: 4, title: 'Creative Cut', category: 'Short Videos', videoUrl: '/portfolio-3.mp4', thumbnail: '/thumb-creative.jpg', desc: 'Creative short-form video edit' },
+  { id: 1, title: 'Motion Graphics Edit', category: 'Short Videos', videoUrl: '/portfolio-2.mp4', thumbnail: '/thumb-motion.jpg', desc: 'Dynamic motion graphics and typography' },
+  { id: 3, title: 'Footages Compilation', category: 'Short Videos', videoUrl: '/portfolio-footages.mp4', thumbnail: '/thumb-footages.jpg', desc: 'High-energy raw footage compilation' },
   { id: 5, title: 'Clinic Poster Design', category: 'Posters', thumbnail: '/clinic-poster.jpg', desc: 'Professional clinic branding poster' },
   { id: 6, title: 'Coffee Poster Design', category: 'Posters', thumbnail: '/coffee-poster.jpg', desc: 'Vibrant coffee shop advertisement' },
   { id: 7, title: 'Shoe Ad Design', category: 'Posters', thumbnail: '/shoe-poster.png', desc: 'Dynamic shoe promotional poster' },
@@ -71,11 +71,7 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
       <div className="project-hover-overlay">
         <span className="hover-text">{project.category === 'Short Videos' ? '▶ Play Video' : '👁 View Poster'}</span>
       </div>
-      {project.category === 'Short Videos' ? (
-        <video src={project.videoUrl} className="project-thumb" style={{ height: '70%', width: '100%', objectFit: 'cover' }} muted preload="metadata" />
-      ) : (
-        <img src={project.thumbnail} alt={project.title} className="project-thumb poster-thumb" style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
-      )}
+      <img src={project.thumbnail} alt={project.title} className={project.category === 'Posters' ? 'project-thumb poster-thumb' : 'project-thumb'} style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
       <div className="project-copy" style={{ height: '30%', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'var(--surface-light)' }}>
         <h3 style={{ fontSize: '1.6rem', margin: '0 0 6px 0', color: '#fff', lineHeight: '1.2' }}>{project.title}</h3>
         <p style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{project.desc}</p>
@@ -167,9 +163,10 @@ export default function Portfolio() {
             >
               {selectedProject.category === 'Short Videos' ? (
                 <video
-                  src={selectedProject.videoUrl.split('#')[0]} // Remove the #t= for actual playback
+                  src={selectedProject.videoUrl} 
                   controls
                   autoPlay
+                  preload="none"
                   style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
                 />
               ) : (
