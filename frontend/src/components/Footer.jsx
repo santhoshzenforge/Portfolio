@@ -14,7 +14,7 @@ export default function Footer({ logo }) {
         </a>
 
         <p className="footer-copy">
-          &copy; {new Date().getFullYear()} Sandy_editorfrnd. Crafted with <HiHeart style={{ verticalAlign: 'middle' }} /> All rights reserved.
+          &copy; {new Date().getFullYear()} Santhosh. Crafted with <HiHeart style={{ verticalAlign: 'middle' }} /> All rights reserved.
         </p>
       </div>
     </footer>

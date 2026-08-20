@@ -48,7 +48,7 @@ export default function Hero() {
         >
           <p className="hero-kicker">Freelance Portfolio</p>
           <h1>
-            Sandy_<span className="gold-text">editorfrnd</span>
+            Santhosh
           </h1>
           <p className="hero-role">{displayText}</p>
           <p>
