@@ -48,7 +48,7 @@ export default function Hero() {
         >
           <p className="hero-kicker">Freelance Portfolio</p>
           <h1>
-            ZenForge <span className="gold-text">Edits</span>
+            Sandy_<span className="gold-text">editorfrnd</span>
           </h1>
           <p className="hero-role">{displayText}</p>
           <p>
