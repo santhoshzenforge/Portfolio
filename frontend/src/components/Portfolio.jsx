@@ -70,7 +70,7 @@ function VideoThumb({ videoUrl, className, style }) {
         src={videoUrl}
         muted
         preload="metadata"
-        style={{ display: 'none' }}
+        style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
       />
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {thumbUrl ? (
