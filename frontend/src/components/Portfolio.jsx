@@ -67,7 +67,7 @@ function VideoThumb({ videoUrl, className, style }) {
     <>
       <video
         ref={videoRef}
-        src={videoUrl}
+        src={encodeURI(videoUrl)}
         muted
         preload="metadata"
         style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
@@ -223,22 +223,18 @@ export default function Portfolio() {
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
           >
-            <motion.div
-              layoutId={`project-${selectedProject.id}`}
+            <div
               style={{ width: '100%', maxWidth: '1000px', display: 'flex', justifyContent: 'center' }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               {selectedProject.category === 'Short Videos' ? (
                 <video
-                  src={selectedProject.videoUrl}
+                  key={selectedProject.id}
+                  src={encodeURI(selectedProject.videoUrl)}
                   controls
                   autoPlay
                   muted
                   playsInline
-                  preload="auto"
                   style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
                 />
               ) : (
@@ -248,7 +244,7 @@ export default function Portfolio() {
                   style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
                 />
               )}
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
