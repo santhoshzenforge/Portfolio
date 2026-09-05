@@ -23,6 +23,31 @@ const projects = [
   { id: 8, title: 'Portfolio Showcase', category: 'Posters', thumbnail: '/portfolio-banner.jpg', desc: 'Custom portfolio branding' },
 ]
 
+function VideoModal({ project }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const vid = videoRef.current
+    if (!vid) return
+    vid.muted = true
+    vid.play().then(() => {
+      vid.muted = false
+      vid.volume = 1
+    }).catch(() => {})
+  }, [project])
+
+  return (
+    <video
+      ref={videoRef}
+      key={project.id}
+      src={encodeURI(project.videoUrl)}
+      controls
+      playsInline
+      style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
+    />
+  )
+}
+
 const SWIPE_THRESHOLD = 100
 
 function VideoThumb({ videoUrl, className, style }) {
@@ -228,15 +253,7 @@ export default function Portfolio() {
               onClick={(e) => e.stopPropagation()}
             >
               {selectedProject.category === 'Short Videos' ? (
-                <video
-                  key={selectedProject.id}
-                  src={encodeURI(selectedProject.videoUrl)}
-                  controls
-                  autoPlay
-                  muted
-                  playsInline
-                  style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
-                />
+                <VideoModal project={selectedProject} />
               ) : (
                 <img
                   src={selectedProject.thumbnail}
