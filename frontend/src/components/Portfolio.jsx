@@ -6,10 +6,17 @@ import { HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 const categories = ['Short Videos', 'Posters']
 
 const projects = [
-  { id: 2, title: 'Book Promo Edit', category: 'Short Videos', videoUrl: '/portfolio-book.mp4', thumbnail: '/thumb-book.jpg', desc: 'Cinematic promotional edit' },
-  { id: 4, title: 'Creative Cut', category: 'Short Videos', videoUrl: '/portfolio-3.mp4', thumbnail: '/thumb-creative.jpg', desc: 'Creative short-form video edit' },
   { id: 1, title: 'Motion Graphics Edit', category: 'Short Videos', videoUrl: '/portfolio-2.mp4', thumbnail: '/thumb-motion.jpg', desc: 'Dynamic motion graphics and typography' },
+  { id: 2, title: 'Book Promo Edit', category: 'Short Videos', videoUrl: '/portfolio-book.mp4', thumbnail: '/thumb-book.jpg', desc: 'Cinematic promotional edit' },
   { id: 3, title: 'Footages Compilation', category: 'Short Videos', videoUrl: '/portfolio-footages.mp4', thumbnail: '/thumb-footages.jpg', desc: 'High-energy raw footage compilation' },
+  { id: 4, title: 'Creative Cut', category: 'Short Videos', videoUrl: '/portfolio-3.mp4', thumbnail: '/thumb-creative.jpg', desc: 'Creative short-form video edit' },
+  { id: 9, title: 'WFL Demo', category: 'Short Videos', videoUrl: '/WFL DEMO 1.mp4', desc: 'Professional demo reel' },
+  { id: 10, title: 'Cinematic Edit', category: 'Short Videos', videoUrl: '/CHESTFINAL2 - Copy.mp4', desc: 'Cinematic visual storytelling' },
+  { id: 11, title: 'Sports Edit', category: 'Short Videos', videoUrl: '/ORTHOAND SPORTS 1.mp4', desc: 'High-energy sports compilation' },
+  { id: 12, title: 'Reel Edit', category: 'Short Videos', videoUrl: '/REEL 3 FOR ME - Copy.mp4', desc: 'Creative reel production' },
+  { id: 13, title: 'Ratings Edit', category: 'Short Videos', videoUrl: '/RATINGS FOR EDITING SOFTWARE - Copy.mp4', desc: 'Software ratings showcase' },
+  { id: 14, title: 'Sleeve Car Edit', category: 'Short Videos', videoUrl: '/SRIVELANCARS SMAPLE EDIT.mp4', desc: 'Sleek automotive visuals' },
+  { id: 15, title: 'Quick Edit', category: 'Short Videos', videoUrl: '/PSILKS T.mp4', desc: 'Quick creative montage' },
   { id: 5, title: 'Clinic Poster Design', category: 'Posters', thumbnail: '/clinic-poster.jpg', desc: 'Professional clinic branding poster' },
   { id: 6, title: 'Coffee Poster Design', category: 'Posters', thumbnail: '/coffee-poster.jpg', desc: 'Vibrant coffee shop advertisement' },
   { id: 7, title: 'Shoe Ad Design', category: 'Posters', thumbnail: '/shoe-poster.png', desc: 'Dynamic shoe promotional poster' },
@@ -71,7 +78,14 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
       <div className="project-hover-overlay">
         <span className="hover-text">{project.category === 'Short Videos' ? '▶ Play Video' : '👁 View Poster'}</span>
       </div>
-      <img src={project.thumbnail} alt={project.title} className={project.category === 'Posters' ? 'project-thumb poster-thumb' : 'project-thumb'} style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
+      {project.thumbnail ? (
+        <img src={project.thumbnail} alt={project.title} className={project.category === 'Posters' ? 'project-thumb poster-thumb' : 'project-thumb'} style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
+      ) : (
+        <div className="project-thumb project-thumb-video-fallback" style={{ height: '70%', width: '100%', background: '#0a0a1a', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+          <video src={project.videoUrl} muted preload="metadata" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} />
+          <div style={{ position: 'relative', zIndex: 1, width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.8rem' }}>▶</div>
+        </div>
+      )}
       <div className="project-copy" style={{ height: '30%', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'var(--surface-light)' }}>
         <h3 style={{ fontSize: '1.6rem', margin: '0 0 6px 0', color: '#fff', lineHeight: '1.2' }}>{project.title}</h3>
         <p style={{ fontSize: '1.1rem', margin: 0, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{project.desc}</p>

@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { HiHome, HiUser, HiLightningBolt, HiFilm, HiMail, HiVideoCamera } from 'react-icons/hi';
+import { HiHome, HiUser, HiLightningBolt, HiFilm, HiMail } from 'react-icons/hi';
 
 const navLinks = [
   { name: 'Home', href: '#home', icon: HiHome },
   { name: 'About', href: '#about', icon: HiUser },
   { name: 'Skills', href: '#skills', icon: HiLightningBolt },
   { name: 'Works', href: '#portfolio', icon: HiFilm },
-  { name: 'Reels', href: '#short-videos', icon: HiVideoCamera },
   { name: 'Contact', href: '#contact', icon: HiMail },
 ];
 

@@ -5,7 +5,6 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Portfolio from './components/Portfolio'
-import ShortVideos from './components/ShortVideos'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -30,7 +29,6 @@ export default function App() {
       <SectionTransition><About profileImg={profileImg} /></SectionTransition>
       <SectionTransition><Skills /></SectionTransition>
       <SectionTransition><Portfolio /></SectionTransition>
-      <SectionTransition><ShortVideos /></SectionTransition>
       <SectionTransition><Contact /></SectionTransition>
       <Footer logo={logo} />
     </>
