@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
@@ -25,6 +25,65 @@ const projects = [
 
 const SWIPE_THRESHOLD = 100
 
+function VideoThumb({ videoUrl, className, style }) {
+  const videoRef = useRef(null)
+  const canvasRef = useRef(null)
+  const [thumbUrl, setThumbUrl] = useState(null)
+
+  const captureFrame = useCallback(() => {
+    const video = videoRef.current
+    const canvas = canvasRef.current
+    if (!video || !canvas) return
+    if (video.videoWidth === 0) return
+
+    canvas.width = video.videoWidth
+    canvas.height = video.videoHeight
+    const ctx = canvas.getContext('2d')
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+    setThumbUrl(canvas.toDataURL('image/jpeg', 0.8))
+  }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleLoaded = () => {
+      video.currentTime = 0.1
+    }
+    const handleSeeked = () => {
+      captureFrame()
+    }
+
+    video.addEventListener('loadeddata', handleLoaded)
+    video.addEventListener('seeked', handleSeeked)
+
+    return () => {
+      video.removeEventListener('loadeddata', handleLoaded)
+      video.removeEventListener('seeked', handleSeeked)
+    }
+  }, [captureFrame, videoUrl])
+
+  return (
+    <>
+      <video
+        ref={videoRef}
+        src={videoUrl}
+        muted
+        preload="metadata"
+        style={{ display: 'none' }}
+      />
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
+      {thumbUrl ? (
+        <img src={thumbUrl} className={className} style={style} alt="" />
+      ) : (
+        <div className={className} style={{ ...style, background: '#0a0a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.8rem' }}>▶</div>
+        </div>
+      )}
+    </>
+  )
+}
+
 function Card({ project, index, isTop, swipe, handleOpenProject }) {
   const x = useMotionValue(0)
   const rotate = useTransform(x, [-200, 200], [-15, 15])
@@ -38,16 +97,15 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
     }
   }
 
-  // Visual stacking effects
   const scale = 1 - index * 0.05;
   const yOffset = index * 10;
-  
-  // Create a fan effect for the cards beneath the top card
-  // Index 1 goes slightly right, Index 2 goes slightly left
+
   let initialRotation = 0;
   if (index === 1) initialRotation = 6;
   if (index === 2) initialRotation = -6;
   if (index === 3) initialRotation = 10;
+
+  const thumbClass = project.category === 'Posters' ? 'project-thumb poster-thumb' : 'project-thumb'
 
   return (
     <motion.article
@@ -57,19 +115,18 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       onDragEnd={handleDragEnd}
       onClick={(e) => {
-        // Prevent click if they were dragging
         if (Math.abs(x.get()) < 5) handleOpenProject(project)
       }}
       initial={false}
-      animate={{ 
-        scale, 
+      animate={{
+        scale,
         y: yOffset,
         zIndex: 10 - index,
-        opacity: index > 3 ? 0 : 1 // Show top 4
+        opacity: index > 3 ? 0 : 1
       }}
-      style={{ 
-        x: isTop ? x : 0, 
-        rotate: isTop ? rotate : initialRotation, 
+      style={{
+        x: isTop ? x : 0,
+        rotate: isTop ? rotate : initialRotation,
         opacity: isTop ? opacity : 1,
         transformOrigin: "bottom center"
       }}
@@ -79,12 +136,13 @@ function Card({ project, index, isTop, swipe, handleOpenProject }) {
         <span className="hover-text">{project.category === 'Short Videos' ? '▶ Play Video' : '👁 View Poster'}</span>
       </div>
       {project.thumbnail ? (
-        <img src={project.thumbnail} alt={project.title} className={project.category === 'Posters' ? 'project-thumb poster-thumb' : 'project-thumb'} style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
+        <img src={project.thumbnail} alt={project.title} className={thumbClass} style={{ height: '70%', width: '100%', objectFit: 'cover' }} />
       ) : (
-        <div className="project-thumb project-thumb-video-fallback" style={{ height: '70%', width: '100%', background: '#0a0a1a', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-          <video src={project.videoUrl} muted preload="metadata" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} />
-          <div style={{ position: 'relative', zIndex: 1, width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.8rem' }}>▶</div>
-        </div>
+        <VideoThumb
+          videoUrl={project.videoUrl}
+          className={thumbClass}
+          style={{ height: '70%', width: '100%', objectFit: 'cover' }}
+        />
       )}
       <div className="project-copy" style={{ height: '30%', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: 'var(--surface-light)' }}>
         <h3 style={{ fontSize: '1.6rem', margin: '0 0 6px 0', color: '#fff', lineHeight: '1.2' }}>{project.title}</h3>
@@ -98,7 +156,6 @@ export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('Short Videos')
   const [deck, setDeck] = useState([])
   const [selectedProject, setSelectedProject] = useState(null)
-  const [zoomLevel, setZoomLevel] = useState(1)
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
 
   useEffect(() => {
@@ -110,7 +167,6 @@ export default function Portfolio() {
 
   const handleOpenProject = (project) => {
     setSelectedProject(project)
-    setZoomLevel(1)
   }
 
   return (
@@ -144,12 +200,12 @@ export default function Portfolio() {
           <button className="deck-nav-btn deck-nav-prev" onClick={swipePrev}><HiChevronLeft size={28} /></button>
           <AnimatePresence mode="popLayout">
             {deck.map((project, i) => (
-              <Card 
-                key={project.id} 
-                project={project} 
-                index={i} 
+              <Card
+                key={project.id}
+                project={project}
+                index={i}
                 isTop={i === 0}
-                swipe={swipeNext} 
+                swipe={swipeNext}
                 handleOpenProject={handleOpenProject}
               />
             ))}
@@ -177,15 +233,17 @@ export default function Portfolio() {
             >
               {selectedProject.category === 'Short Videos' ? (
                 <video
-                  src={selectedProject.videoUrl} 
+                  src={selectedProject.videoUrl}
                   controls
                   autoPlay
-                  preload="none"
+                  muted
+                  playsInline
+                  preload="auto"
                   style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
                 />
               ) : (
-                <img 
-                  src={selectedProject.thumbnail} 
+                <img
+                  src={selectedProject.thumbnail}
                   alt={selectedProject.title}
                   style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
                 />
