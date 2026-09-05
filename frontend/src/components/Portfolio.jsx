@@ -232,7 +232,6 @@ export default function Portfolio() {
                   key={selectedProject.id}
                   src={encodeURI(selectedProject.videoUrl)}
                   controls
-                  autoPlay
                   muted
                   playsInline
                   style={{ width: '100%', maxHeight: '85vh', borderRadius: '16px', objectFit: 'contain', background: '#000', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}
