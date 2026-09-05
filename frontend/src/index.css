@@ -1216,10 +1216,11 @@ section {
   .deck-container {
     height: 450px;
     max-width: 320px;
-    margin-bottom: 100px; /* Prevents overlapping with the dock */
+    margin-bottom: 100px;
+    padding: 0 56px;
   }
-  .deck-nav-prev { left: -15px; }
-  .deck-nav-next { right: -15px; }
+  .deck-nav-prev { left: 4px; }
+  .deck-nav-next { right: 4px; }
   .dock-item {
     width: 48px !important;
     height: 48px !important;
@@ -1231,9 +1232,10 @@ section {
     height: 400px;
     max-width: 280px;
     margin-bottom: 100px;
+    padding: 0 48px;
   }
-  .deck-nav-prev { left: -10px; }
-  .deck-nav-next { right: -10px; }
+  .deck-nav-prev { left: 0; }
+  .deck-nav-next { right: 0; }
   .deck-nav-btn {
     width: 40px;
     height: 40px;
