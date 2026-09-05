@@ -29,11 +29,12 @@ function VideoModal({ project }) {
   useEffect(() => {
     const vid = videoRef.current
     if (!vid) return
-    vid.muted = true
-    vid.play().then(() => {
-      vid.muted = false
-      vid.volume = 1
-    }).catch(() => {})
+    vid.muted = false
+    vid.volume = 1
+    vid.play().catch(() => {
+      vid.muted = true
+      vid.play().catch(() => {})
+    })
   }, [project])
 
   return (
